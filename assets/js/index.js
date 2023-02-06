@@ -9,6 +9,8 @@ function getHistory() {
     historyBtns.empty();
     history.slice(0, 5).forEach(function (city) {
         const btn = $("<button>").text(city);
+        btn.addClass("button-25");
+        btn.attr("role", "button");
         historyBtns.append(btn);
     });
 }
@@ -49,10 +51,13 @@ function todaysForecast(citySearch) {
     }).then(function (response) {
         const cityName = response.name;
         const todaysDate = moment().format('DD/MM/YYYY');
-        const cityTitle = $("<h2>").text(`${cityName} ${todaysDate}`);
-        const todaySection = $('#today');
-        weather(todaySection, response, cityTitle);
+        const cityTitle = $("<h2>").text(`${cityName} ${todaysDate}`)
 
+        const todaySection = $('#today');
+
+        todaySection.addClass('todaySection');
+
+        weather(todaySection, response, cityTitle);
         // only save to local storage if city isn't already there 
         if (!history.includes(cityName)) {
             // adds city to index 0 of history array 
@@ -66,6 +71,8 @@ function todaysForecast(citySearch) {
     }).catch(function (error) {
         console.error(error);
         alert("No results found for the given city");
+        // clears input
+        $('#search-input').val("");
     });
 }
 
@@ -86,13 +93,9 @@ function fiveDayForecast(citySearch) {
 
         middayList.forEach(obj => {
             // creating new div for each and styling them
-            const newDiv = $("<div>").text(obj).css({
-                width: '200px',
-                height: '300px',
-                background: 'lightblue',
-                margin: '3px',
-                padding: '3px',
-            });
+            const newDiv = $("<div>").text(obj)
+
+            newDiv.addClass('forecastDivs');
 
             forecastSection.append(newDiv);
 
@@ -137,10 +140,10 @@ historyBtns.on('click', $('button'), function (event) {
 
 
 
-////// TO DO //////
-// instantly update history btns when a new city is searched
-// limit history btns/local storage to 6
-// format search btns
-// format history btns
+    ////// TO DO //////
+    // instantly update history btns when a new city is searched
+    // limit history btns/local storage to 6
+    // format search btns
+    // format history btns
 
-// README
+    // README
