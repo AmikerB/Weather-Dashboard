@@ -3,9 +3,10 @@
 const historyBtns = $('#history');
 
 let history = [];
+let storedCities = localStorage.getItem("cityHistory");
+
 
 function getHistory() {
-    let storedCities = localStorage.getItem("cityHistory");
 
     if (storedCities !== null) {
         history = JSON.parse(storedCities);
@@ -54,10 +55,13 @@ function todaysForecast(citySearch) {
         const todaySection = $('#today');
         weather(todaySection, response, cityTitle);
 
-        // push to histroy array
-        history.push(cityName);
-        // save to local storage 
-        localStorage.setItem("cityHistory", JSON.stringify(history));
+        // only save to local storage if city isnt already there 
+        if (!history.includes(cityName)) {
+            // push to histroy array  
+            history.push(cityName);
+            // save to local storage
+            localStorage.setItem("cityHistory", JSON.stringify(history));
+        }
 
     }).catch(function (error) {
         console.error(error);
@@ -65,11 +69,9 @@ function todaysForecast(citySearch) {
     });
 }
 
-
 // function for 5 day forecast 
-function fiveDayForecast() {
+function fiveDayForecast(citySearch) {
 
-    const citySearch = $('#search-input').val();
     const queryURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + citySearch + '&appid=647cd0964ccafc21b61d37e25926911b' + '&cnt=40';
 
     $.ajax({
@@ -107,7 +109,6 @@ function fiveDayForecast() {
     })
 }
 
-
 getHistory();
 
 $('#search-button').on('click', function (event) {
@@ -118,7 +119,7 @@ $('#search-button').on('click', function (event) {
 
     todaysForecast(cityInput);
 
-    fiveDayForecast();
+    fiveDayForecast(cityInput);
 
 });
 
@@ -126,9 +127,21 @@ $('#search-button').on('click', function (event) {
 historyBtns.on('click', $('button'), function (event) {
     event.preventDefault();
 
-    console.log(event.target.textContent);
+    const cityBtn = event.target.textContent;
 
+    todaysForecast(cityBtn);
 
-
+    fiveDayForecast(cityBtn);
 
 })
+
+
+
+////// TO DO //////
+// clear five day forecast when new city is searched
+// instantly update history btns when a new city is searched
+// limit history btns/local storage to 6
+// format search btns
+// format history btns
+
+// README
