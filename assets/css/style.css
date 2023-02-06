@@ -1,0 +1,131 @@
+.weather-header {
+    background-image: linear-gradient(to right, #2A8387, #81c9cd)
+}
+
+.weather-search {
+    margin: 10px;
+}
+
+.todaySection {
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+.forecastDivs {
+    width: 18%;
+    height: 250px;
+    background: #37ADB2;
+    margin: 3px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    margin-bottom: 10px;
+    border-radius: 8px;
+    width: 100%;
+    height: 40px
+}
+
+
+#search-button {
+    background-color: #FFFFFF;
+    border: 1px solid #222222;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #222222;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 100%;
+    margin: 10px;
+    outline: none;
+    padding: 13px 23px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: box-shadow .2s, -ms-transform .1s, -webkit-transform .1s, transform .1s;
+    user-select: none;
+    -webkit-user-select: none;
+    width: 100%;
+}
+
+
+#search-button:focus-visible {
+    box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+    transition: box-shadow .2s;
+}
+
+#search-button:active {
+    background-color: #F7F7F7;
+    border-color: #000000;
+    transform: scale(.96);
+}
+
+#search-button:disabled {
+    border-color: #DDDDDD;
+    color: #DDDDDD;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+
+
+
+
+
+.button-25 {
+    background-color: #36A9AE;
+    background-image: linear-gradient(#37ADB2, #329CA0);
+    border: 1px solid #2A8387;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 100%;
+    margin: 10px;
+    outline: 0;
+    padding: 11px 15px 12px;
+    text-align: center;
+    transition: box-shadow.05s ease-in-out, opacity.05s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+}
+
+.button-25:hover {
+    box-shadow: rgba(255, 255, 255, 0.3) 0 0 2px inset, rgba(0, 0, 0, 0.4) 0 1px 2px;
+    text-decoration: none;
+    transition-duration: .15s, .15s;
+}
+
+.button-25:active {
+    box-shadow: rgba(0, 0, 0, 0.15) 0 2px 4px inset, rgba(0, 0, 0, 0.4) 0 1px 1px;
+}
+
+.button-25:disabled {
+    cursor: not-allowed;
+    opacity: .6;
+}
+
+.button-25:disabled:active {
+    pointer-events: none;
+}
+
+.button-25:disabled:hover {
+    box-shadow: none;
+}
