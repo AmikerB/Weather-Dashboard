@@ -5,20 +5,18 @@ const historyBtns = $('#history');
 let history = [];
 let storedCities = localStorage.getItem("cityHistory");
 
-
 function getHistory() {
+    historyBtns.empty();
+    history.forEach(function (city) {
+        const btn = $("<button>").text(city);
+        historyBtns.append(btn);
+    });
+}
 
-    if (storedCities !== null) {
-        history = JSON.parse(storedCities);
-
-        // Remove duplicate cities
-        history = Array.from(new Set(history));
-
-        history.forEach(function (city) {
-            const btn = $("<button>").text(city);
-            historyBtns.append(btn);
-        });
-    }
+if (storedCities !== null) {
+    history = JSON.parse(storedCities);
+    history = Array.from(new Set(history));
+    getHistory();
 }
 
 function weather(section, response, sectionTitle) {
@@ -61,6 +59,8 @@ function todaysForecast(citySearch) {
             history.push(cityName);
             // save to local storage
             localStorage.setItem("cityHistory", JSON.stringify(history));
+
+            getHistory();
         }
 
     }).catch(function (error) {
@@ -72,7 +72,7 @@ function todaysForecast(citySearch) {
 // function for 5 day forecast 
 function fiveDayForecast(citySearch) {
 
-    const queryURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + citySearch + '&appid=647cd0964ccafc21b61d37e25926911b' + '&cnt=40';
+    const queryURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + citySearch + '&units=metric&appid=647cd0964ccafc21b61d37e25926911b' + '&cnt=40';
 
     $.ajax({
         url: queryURL,
@@ -81,6 +81,8 @@ function fiveDayForecast(citySearch) {
         const forecastSection = $('#forecast');
         // selecting to display the weather at 12 noon 
         const middayList = response.list.filter(obj => obj.dt_txt.endsWith("12:00:00"));
+
+        forecastSection.empty();
 
         middayList.forEach(obj => {
             // creating new div for each and styling them
@@ -109,8 +111,6 @@ function fiveDayForecast(citySearch) {
     })
 }
 
-getHistory();
-
 $('#search-button').on('click', function (event) {
 
     event.preventDefault();
@@ -138,7 +138,6 @@ historyBtns.on('click', $('button'), function (event) {
 
 
 ////// TO DO //////
-// clear five day forecast when new city is searched
 // instantly update history btns when a new city is searched
 // limit history btns/local storage to 6
 // format search btns
