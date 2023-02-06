@@ -6,7 +6,6 @@ let history = [];
 
 function getHistory() {
     let storedCities = localStorage.getItem("cityHistory");
-    let history = [];
 
     if (storedCities !== null) {
         history = JSON.parse(storedCities);
@@ -20,9 +19,6 @@ function getHistory() {
         });
     }
 }
-
-
-
 
 function weather(section, response, sectionTitle) {
     const weatherIcon = response.weather[0].icon;
@@ -44,8 +40,7 @@ function weather(section, response, sectionTitle) {
 }
 
 // function for todays forcast
-function todaysForecast() {
-    const citySearch = $('#search-input').val();
+function todaysForecast(citySearch) {
 
     const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${citySearch}&mode=json&units=metric&appid=647cd0964ccafc21b61d37e25926911b`;
 
@@ -119,7 +114,9 @@ $('#search-button').on('click', function (event) {
 
     event.preventDefault();
 
-    todaysForecast();
+    const cityInput = $('#search-input').val();
+
+    todaysForecast(cityInput);
 
     fiveDayForecast();
 
