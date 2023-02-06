@@ -7,7 +7,7 @@ let storedCities = localStorage.getItem("cityHistory");
 
 function getHistory() {
     historyBtns.empty();
-    history.forEach(function (city) {
+    history.slice(0, 5).forEach(function (city) {
         const btn = $("<button>").text(city);
         historyBtns.append(btn);
     });
@@ -53,10 +53,10 @@ function todaysForecast(citySearch) {
         const todaySection = $('#today');
         weather(todaySection, response, cityTitle);
 
-        // only save to local storage if city isnt already there 
+        // only save to local storage if city isn't already there 
         if (!history.includes(cityName)) {
-            // push to histroy array  
-            history.push(cityName);
+            // adds city to index 0 of history array 
+            history.unshift(cityName);
             // save to local storage
             localStorage.setItem("cityHistory", JSON.stringify(history));
 
