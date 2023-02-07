@@ -1,6 +1,6 @@
 function weather(section, response, sectionTitle) {
     const weatherIcon = response.weather[0].icon;
-    const todaysWeatherIcon = `http://openweathermap.org/img/wn/${weatherIcon}.png`;
+    const todaysWeatherIcon = `https://openweathermap.org/img/wn/${weatherIcon}.png`;
     const createImgTag = $("<img>");
     createImgTag.attr("src", todaysWeatherIcon);
     createImgTag.attr("alt", "weather icon");
@@ -20,7 +20,7 @@ function weather(section, response, sectionTitle) {
 // function for todays forcast
 function todaysForecast(citySearch) {
 
-    const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${citySearch}&mode=json&units=metric&appid=647cd0964ccafc21b61d37e25926911b`;
+    const queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&mode=json&units=metric&appid=647cd0964ccafc21b61d37e25926911b`;
 
     $.ajax({
         url: queryURL,
@@ -61,7 +61,7 @@ function fiveDayForecast(citySearch) {
     const forecastTitle = '5 Day Forecast:';
     forecastHeader.append(forecastTitle);
 
-    const queryURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + citySearch + '&units=metric&appid=647cd0964ccafc21b61d37e25926911b' + '&cnt=40';
+    const queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + citySearch + '&units=metric&appid=647cd0964ccafc21b61d37e25926911b' + '&cnt=40';
 
     $.ajax({
         url: queryURL,
