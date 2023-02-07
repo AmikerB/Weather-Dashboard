@@ -15,11 +15,17 @@ function getHistory() {
     });
 }
 
+
+
+
 if (storedCities !== null) {
     history = JSON.parse(storedCities);
     history = Array.from(new Set(history));
     getHistory();
 }
+
+
+
 
 function weather(section, response, sectionTitle) {
     const weatherIcon = response.weather[0].icon;
@@ -78,6 +84,11 @@ function todaysForecast(citySearch) {
 
 // function for 5 day forecast 
 function fiveDayForecast(citySearch) {
+    const forecastHeader = $('.forecast-title')
+
+    forecastHeader.empty();
+    const forecastTitle = '5 Day Forecast:';
+    forecastHeader.append(forecastTitle);
 
     const queryURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + citySearch + '&units=metric&appid=647cd0964ccafc21b61d37e25926911b' + '&cnt=40';
 
@@ -85,7 +96,7 @@ function fiveDayForecast(citySearch) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        const forecastSection = $('#forecast');
+       const forecastSection = $('#forecast');
         // selecting to display the weather at 12 noon 
         const middayList = response.list.filter(obj => obj.dt_txt.endsWith("12:00:00"));
 
@@ -141,9 +152,7 @@ historyBtns.on('click', $('button'), function (event) {
 
 
     ////// TO DO //////
-    // instantly update history btns when a new city is searched
-    // limit history btns/local storage to 6
-    // format search btns
-    // format history btns
-
+  
+    // limit local storage to 6
+    // make forecast section responsive to page size
     // README
