@@ -13,16 +13,11 @@ function getHistory() {
 
     history.forEach(function (city, index) {
         const btn = $("<button>").text(city);
-        btn.addClass("button-25");
+        btn.addClass("history-button");
         btn.attr("role", "button");
         historyBtns.append(btn);
     });
-
-
 }
-
-
-
 
 if (storedCities !== null) {
     history = JSON.parse(storedCities);
