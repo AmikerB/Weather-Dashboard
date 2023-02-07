@@ -67,7 +67,7 @@ function fiveDayForecast(citySearch) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-       const forecastSection = $('#forecast');
+        const forecastSection = $('#forecast');
         // selecting to display the weather at 12 noon 
         const middayList = response.list.filter(obj => obj.dt_txt.endsWith("12:00:00"));
 
@@ -116,10 +116,3 @@ historyBtns.on('click', $('button'), function (event) {
     fiveDayForecast(cityBtn);
 })
 
-
-
-    ////// TO DO //////
-  
-    // limit local storage to 6
-    // make forecast section responsive to page size
-    // README
