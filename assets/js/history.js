@@ -1,22 +1,31 @@
 // display history seaches as buttons
 // limit to 6 history searches
-// const historyBtns = $('#history');
 
-// let history = [];
+const historyBtns = $('#history');
+
+let history = [];
+let storedCities = localStorage.getItem("cityHistory");
+
+function getHistory() {
+    historyBtns.empty();
+
+    history = history.slice(0, 6);
+
+    history.forEach(function (city, index) {
+        const btn = $("<button>").text(city);
+        btn.addClass("button-25");
+        btn.attr("role", "button");
+        historyBtns.append(btn);
+    });
 
 
-// function getHistory() {
-
-//     let storedCities = localStorage.getItem("cityHistory");
-
-//     historyBtns.empty();
-//     history.slice(0, 5).forEach(function (city) {
-//         const btn = $("<button>").text(city);
-//         btn.addClass("button-25");
-//         btn.attr("role", "button");
-//         historyBtns.append(btn);
-//     });
+}
 
 
 
-// }
+
+if (storedCities !== null) {
+    history = JSON.parse(storedCities);
+    history = Array.from(new Set(history));
+    getHistory();
+}
