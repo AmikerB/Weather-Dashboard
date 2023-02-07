@@ -1,6 +1,6 @@
 # Weather-Dashboard
 
-This [Weather-Dashboard webpage]() allows the user to find the current weather and the next five days weather forecast for any choosen city. The webpage is created using the Open Weather API. The users previously searched cities are displayed as buttons underneath the search box and allow the user to quickley access the weather forecast for these cities. 
+This [Weather-Dashboard webpage](https://amikerb.github.io/Weather-Dashboard/) allows the user to find the current weather and the next five days weather forecast for any choosen city. The webpage is created using the Open Weather API. The users previously searched cities are displayed as buttons underneath the search box and allow the user to quickley access the weather forecast for these cities. 
 
 ## Screenshot
 
