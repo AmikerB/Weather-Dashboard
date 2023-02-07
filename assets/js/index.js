@@ -1,32 +1,3 @@
-// display history seaches as buttons
-// limit to 6 history searches  
-const historyBtns = $('#history');
-
-let history = [];
-let storedCities = localStorage.getItem("cityHistory");
-
-function getHistory() {
-    historyBtns.empty();
-    history.slice(0, 5).forEach(function (city) {
-        const btn = $("<button>").text(city);
-        btn.addClass("button-25");
-        btn.attr("role", "button");
-        historyBtns.append(btn);
-    });
-}
-
-
-
-
-if (storedCities !== null) {
-    history = JSON.parse(storedCities);
-    history = Array.from(new Set(history));
-    getHistory();
-}
-
-
-
-
 function weather(section, response, sectionTitle) {
     const weatherIcon = response.weather[0].icon;
     const todaysWeatherIcon = `http://openweathermap.org/img/wn/${weatherIcon}.png`;
@@ -140,13 +111,9 @@ $('#search-button').on('click', function (event) {
 
 historyBtns.on('click', $('button'), function (event) {
     event.preventDefault();
-
     const cityBtn = event.target.textContent;
-
     todaysForecast(cityBtn);
-
     fiveDayForecast(cityBtn);
-
 })
 
 
