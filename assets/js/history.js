@@ -11,7 +11,7 @@ function getHistory() {
 
     history = history.slice(0, 6);
 
-    history.forEach(function (city, index) {
+    history.forEach(function (city) {
         const btn = $("<button>").text(city);
         btn.addClass("history-button");
         btn.attr("role", "button");
