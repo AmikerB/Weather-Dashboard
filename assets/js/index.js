@@ -61,7 +61,7 @@ function fiveDayForecast(citySearch) {
     const forecastTitle = '5 Day Forecast:';
     forecastHeader.append(forecastTitle);
 
-    const queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + citySearch + '&units=metric&appid=647cd0964ccafc21b61d37e25926911b' + '&cnt=40';
+    const queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + citySearch + '&units=metric&appid=647cd0964ccafc21b61d37e25926911b&cnt=40';
 
     $.ajax({
         url: queryURL,
@@ -96,7 +96,7 @@ function fiveDayForecast(citySearch) {
     })
 }
 
-$('#search-button').on('click', function (event) {
+$('#search-form').on('submit', function (event) {
 
     event.preventDefault();
 
